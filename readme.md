@@ -96,6 +96,8 @@ python train.py \
 
 Evaluation scripts can be found in `./evaluation/` folder.  Pretrained checkpoints are available  To evaluate, for instance, Run the following command to the evaluation on BTS3.1 dataset.
 
+Pretrained checkpoints for the models are available at: https://drive.google.com/drive/folders/13XvZXnJyxakFBdR22TTP5x_QdmmObScz?usp=sharing
+
 ```
 python ./evaluation/Eval_BRIAR.py \
     --selected_experts 4 \
@@ -128,6 +130,7 @@ year={2022},
 url={https://openreview.net/forum?id=5yAmUvdXAve}
 }
 ```
+
 
 ```
 @INPROCEEDINGS{9880230,
