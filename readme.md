@@ -8,6 +8,17 @@ Face feature fusion is indispensable for robust face recognition, particularly i
 ![image info](./images/architecture.png)
 
 
+## Setup Environment
+
+```
+conda env create -f environment.yml
+conda activate reid_briar_env
+
+or 
+
+conda env create -f environment.yml -n new_env_name
+```
+
 ## Data
 
 #### BRIAR
