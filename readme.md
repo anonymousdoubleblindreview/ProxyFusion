@@ -143,17 +143,6 @@ url={https://openreview.net/forum?id=5yAmUvdXAve}
 ```
 
 ```
-@inproceedings{jawade2023conan,
-  title={Conan: Conditional neural aggregation network for unconstrained face feature fusion},
-  author={Jawade, Bhavin and Mohan, Deen Dayal and Fedorishin, Dennis and Setlur, Srirangaraj and Govindaraju, Venu},
-  booktitle={2023 IEEE International Joint Conference on Biometrics (IJCB)},
-  pages={1--10},
-  year={2023},
-  organization={IEEE}
-}
-```
-
-```
 @article{deng2019retinaface,
   title={Retinaface: Single-stage dense face localisation in the wild},
   author={Deng, Jiankang and Guo, Jia and Zhou, Yuxiang and Yu, Jinke and Kotsia, Irene and Zafeiriou, Stefanos},
