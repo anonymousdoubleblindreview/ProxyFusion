@@ -16,6 +16,9 @@ from tqdm import tqdm
 import glob
 BUFFER_MODIFIER = 0.2
 LARGE_FIGURE = (16,16)
+import sys
+outer_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, outer_directory)
 from utils.VerificationResults import VerificationResults
 import matplotlib
 import matplotlib.pyplot as plt
@@ -23,6 +26,7 @@ from models.fusion_models import ProxyFusion
 import csv
 import scipy
 import pickle as pkl
+import argparse
 
 def metrics_at_thersholds(dataframe):
     tar = dataframe['tar']
@@ -389,7 +393,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    model = MultiProxy(DIM=512)
+    model = ProxyFusion(DIM=512)
     model = model.cuda()    
     checkpoint = torch.load(args.pretrained_checkpoint_path)
     model.load_state_dict(checkpoint['state_dict']["model_weights"])

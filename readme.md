@@ -7,6 +7,13 @@ Face feature fusion is indispensable for robust face recognition, particularly i
 
 ![image info](./images/architecture.png)
 
+## Running Screenshots 
+
+**Training Screenshot:**
+![Training Screenshot](./images/training_screenshot.png)
+**Evaluation Screenshot:**
+![Evaluation Screenshot](./images/evaluation_screenshot.png)
+
 
 ## Setup Environment
 

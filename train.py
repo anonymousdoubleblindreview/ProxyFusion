@@ -9,6 +9,7 @@ from    torchvision.transforms import functional as F
 import  numpy as np
 import  torch
 from    PIL import Image
+from    tqdm import tqdm
 import  cv2
 import  pandas as pd
 from    PIL import Image
@@ -24,6 +25,7 @@ import  warnings
 from    transformers import Adafactor
 from    itertools import chain
 from    datasets.BRS_Dataset import BRSDataset
+import  argparse
 
 warnings.filterwarnings("ignore")
 torch.autograd.set_detect_anomaly(True)
@@ -50,19 +52,20 @@ args = parser.parse_args()
 
 # Define Model
 model           = ProxyFusion(DIM=args.feature_dim)
+
+model.K_g        = args.selected_experts
+model.K_p        = args.selected_experts
+model.K_g_all    = args.total_experts
+model.K_p_all    = args.total_experts
+model.domain_dim = args.domain_dim
+
 model           = torch.nn.DataParallel(model)
 model           = model.cuda()
 
-model.module.K_g        = args.selected_experts
-model.module.K_p        = args.selected_experts
-model.module.K_g_all    = args.total_experts
-model.module.K_p_all    = args.total_experts
-model.module.domain_dim = args.domain_dim
-
 criterion       = ProxyConcat_Loss(model.module.K_g,model.module.K_p).cuda()
-proxy_loss      = LatticeLoss(model.K_g_all, model.domain_dim).cuda()
+proxy_loss      = LatticeLoss(model.module.K_g_all, model.module.domain_dim).cuda()
 
-combined_params = chain(model.parameters(), criterion.parameters())
+combined_params = chain(model.module.parameters(), criterion.parameters())
 optimizer       = Adafactor(combined_params, scale_parameter=True, relative_step=True)
 
 # Evaluate Baseline (GAP) before training
